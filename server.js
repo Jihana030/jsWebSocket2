@@ -55,7 +55,6 @@ wss.on('connection', (ws, request) => {
                 </div>
             </div>
         `);
-        console.log(wss.clients);
         //clients는 리스트가 아닌 set이므로 size를 사용
         // wss.broadcast(`new user enter. no:${wss.clients.size}`); //브로드캐스트 만든 거 썼더니 중복메시지가 떠서 아웃
     })
@@ -72,7 +71,7 @@ wss.on('connection', (ws, request) => {
 //
 // app.use(express.static(__dirname));
 // app.get("/", function (req, res) {
-//     res.sendFile(__dirname + '/index.html');
+//     res.sendFile(__dirname + '/chat.html');
 // })
 //
 // socket.on('connection', (ws, req) => {

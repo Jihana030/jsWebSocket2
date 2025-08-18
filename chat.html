@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..24" />
+    <link rel="stylesheet" href="./main.css">
+    <link rel="stylesheet" href="./basic.css">
+    <script src="./chat.js" defer></script>
+    <title>instagram style chat</title>
+</head>
+<body>
+<div class="container">
+    <div class="top">
+        <div>
+            <span class="material-symbols-rounded">keyboard_backspace</span>
+        </div>
+        <div class="user-info">
+            <div class="user-thumb">
+                <img src="https://api.dicebear.com/9.x/thumbs/svg?seed=한글도 가능?" alt="user">
+            </div>
+            <div class="user-text">
+                <span class="user-name"></span>
+                <span class="user-id">user id</span>
+            </div>
+        </div>
+        <div>
+            <span class="material-symbols-rounded">call</span>
+            <span class="material-symbols-rounded">videocam</span>
+        </div>
+    </div>
+    <div class="content" id="chat-log">
+        <!--    채팅 내용    -->
+    </div>
+    <div class="bottom">
+        <div>
+            <span class="material-symbols-rounded">photo_camera</span>
+        </div>
+        <div>
+            <textarea class="input-box" rows="1" spellcheck="false" id="message"></textarea>
+        </div>
+        <div>
+            <span class="material-symbols-rounded">mic</span>
+            <span class="material-symbols-rounded">image</span>
+            <span class="material-symbols-rounded">add_reaction</span>
+            <span id="btn-send" class="material-symbols-rounded">send</span>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,14 +1,29 @@
 const ws = new WebSocket('ws://localhost:8001');
 const message = document.querySelector('.input-box');
 const sendBtn = document.querySelector('#btn-send');
-function sendMessage() {
-    const nickname = document.getElementById('nickname').value;
+const content = document.querySelector('.content');
+let userName;
+
+//username 받기
+document.addEventListener('DOMContentLoaded', () => {
+    ws.onopen = () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        if(userName && userName !== ''){
+            userName = urlParams.get('username');
+            sendMessage(userName);
+        }
+    }
+    ws.onmessage = receiveMessage;
+})
+
+function sendMessage(name) {
+    // const nickname = document.getElementById('nickname').value;
     const sendMessage = document.getElementById('message').value;
     const time = new Date().toLocaleString();
     const fullMessage = `
         <div class="user-thumb">
-            <img src="https://api.dicebear.com/9.x/thumbs/svg?seed=${nickname}" alt="user"/>
-            <span class="user-name">${nickname}</span>
+            <img src="https://api.dicebear.com/9.x/thumbs/svg?seed=${name}" alt="user"/>
+            <span class="user-name">${name}</span>
         </div>
         <div class="user-message">
             <div>
@@ -20,21 +35,19 @@ function sendMessage() {
 
     ws.send(fullMessage);
     document.querySelector('#message').value = '';
+    scrollToBottom(content);
 }
 
 function receiveMessage(event) {
     const chat = document.createElement("div");
     chat.className = 'chat-bubble left'
-    // const message = document.createTextNode(event.data);
-    // chat.appendChild(message);
-    console.log(event);
     chat.innerHTML = `${event.data}`
 
     const chatLog = document.getElementById('chat-log');
     chatLog.appendChild(chat);
 }
 
-ws.onmessage = receiveMessage;
+// ws.onmessage = receiveMessage;
 
 // textarea 높이
 message.addEventListener('input', e=>{
@@ -51,7 +64,7 @@ function autoHeight(input){
 
 // 전송버튼
 sendBtn.addEventListener("click", ()=>{
-    sendMessage();
+    sendMessage(userName);
     message.value = '';
     message.style.height = 'auto';
 });
@@ -65,3 +78,8 @@ message.addEventListener("keydown", (e)=>{
         }
     }
 });
+
+//스크롤 아래 고정
+function scrollToBottom(content){
+    content.scrollTop = content.scrollHeight;
+}
