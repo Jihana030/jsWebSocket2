@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>start</title>
+</head>
+<body>
+<div>
+    <input type="text" id="nickname" placeholder="닉네임">
+    <input type="text" id="message" placeholder="메세지">
+    <button type="button" onclick="socket.send('hi')">입력</button>
+</div>
+<div id="chat-log"></div>
+</body>
+<script>
+    let socket = new WebSocket('ws://localhost:8003');
+
+    function sendMessage(message) {
+    }
+    function receiveMessage(message) {
+    }
+</script>
+</html>
