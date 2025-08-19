@@ -21,8 +21,10 @@
 
   connectBtn.addEventListener('click', e=>{
     let userName = document.querySelector('#user-name').value;
-    if(userName !== null && userName !== ''){
+    if(userName !== null && userName.trim() !== ''){
       window.open(`chat.html?username=${userName}`);
+    } else {
+      alert('유효하지 않은 닉네임')
     }
   });
 
