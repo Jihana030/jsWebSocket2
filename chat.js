@@ -161,12 +161,7 @@ function print(name, msg, side, state, time){
         </div>
     `
     if(side === 'me'){
-        if(content.children.length === 0){
-            const chatMe = document.createElement('div');
-            chatMe.className = 'chat-bubble right';
-            chatMe.innerHTML = temp;
-            content.appendChild(chatMe);
-        } else if(content.lastElementChild.classList.contains('right')){
+        if(content.children.length !== 0 && content.lastElementChild.classList.contains('right')){
             const userMessage = content.lastElementChild.querySelector('.user-message');
             userMessage.innerHTML += temp2;
         } else {
@@ -176,13 +171,7 @@ function print(name, msg, side, state, time){
             content.appendChild(chatMe);
         }
     } else {
-        if(content.children.length === 0){
-            const chatMe = document.createElement('div');
-            chatMe.className = 'chat-bubble left';
-            chatMe.innerHTML = user;
-            chatMe.innerHTML += temp;
-            content.appendChild(chatMe);
-        } else if(content.lastElementChild.classList.contains('left')){
+        if(content.children.length !== 0 && content.lastElementChild.classList.contains('left')){
             const userMessage = content.lastElementChild.querySelector('.user-message');
             const userThumb = content.lastElementChild.querySelector('.user-thumb');
             if(name !== userThumb.querySelector('.user-name').innerText){
